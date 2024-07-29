@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
         naviMenu.setItemIconTintList(null);
         getSupportFragmentManager().beginTransaction().replace(R.id.container,homeF).commit();
-        naviMenu.setItemIconSize(100);
+        naviMenu.setItemIconSize(150);
 
         naviMenu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
