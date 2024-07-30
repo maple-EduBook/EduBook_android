@@ -20,8 +20,11 @@
         android:layout_height="70dp"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/menu_design"
+        android:elevation="0dp"
+        android:outlineAmbientShadowColor="#BABABA"
+        android:outlineSpotShadowColor="#BABABA"
 
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -29,5 +32,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/bottom_navigation"
         style="@style/NoRippleEffect"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
