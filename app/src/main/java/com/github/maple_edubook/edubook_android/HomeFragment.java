@@ -26,6 +26,15 @@ public class HomeFragment extends Fragment {
     private ImageView imageView;
     private TextView cameraText;
 
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        imageView = view.findViewById(R.id.imageView);
+        cameraText = view.findViewById(R.id.cameraText);
+
+        return view;
+    }
     private final ActivityResultLauncher<Intent> activityResultPicture = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -34,6 +43,7 @@ public class HomeFragment extends Fragment {
                     if (result.getResultCode() == RESULT_OK && result.getData() != null) {
                         Bundle extras = result.getData().getExtras();
                         if (extras != null) {
+                            cameraText.setText("");
                             bitmap = (Bitmap) extras.get("data");
                             imageView.setImageBitmap(bitmap);
                         }
@@ -42,22 +52,10 @@ public class HomeFragment extends Fragment {
             }
     );
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-        imageView = view.findViewById(R.id.imageView);
-        cameraText = view.findViewById(R.id.cameraText);
+    public void triggerPicBtn() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        activityResultPicture.launch(intent);
 
-        Button picBtn = view.findViewById(R.id.pic_btn);
-        picBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                cameraText.setText("");
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                activityResultPicture.launch(intent);
-            }
-        });
-        return view;
     }
 }
+
