@@ -2,9 +2,7 @@ package com.github.maple_edubook.edubook_android;
 
 import static android.app.Activity.RESULT_OK;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,9 +11,6 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
@@ -27,7 +22,7 @@ import android.widget.ImageView;
 
 import java.io.IOException;
 
-public class ImageFragment extends Fragment {
+public class UploadFragment extends Fragment {
     Bitmap bitmap;
     Button camBtn;
     Button selectBtn;
@@ -39,7 +34,7 @@ public class ImageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_image, container, false);
+        View view = inflater.inflate(R.layout.fragment_upload, container, false);
 
         camBtn = view.findViewById(R.id.camera_btn);
         selectBtn = view.findViewById(R.id.selectimg_btn);
@@ -66,7 +61,8 @@ public class ImageFragment extends Fragment {
         uploadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getActivity(),SubjectselcetActivity.class); //fragment라서 activity intent와는 다른 방식
+                startActivity(intent);
             }
         });
         return view;

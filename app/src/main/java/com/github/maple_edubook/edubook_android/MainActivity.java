@@ -9,13 +9,12 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.navigation.NavigationBarMenu;
 import com.google.android.material.navigation.NavigationBarView;
 
 
 public class MainActivity extends AppCompatActivity {
     HomeFragment homeF;
-    ImageFragment imagef;
+    UploadFragment imagef;
     MypageFragment mypagef;
     NavigationBarView naviMenu;
     Menu menu;
@@ -26,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         homeF = new HomeFragment();
-        imagef = new ImageFragment();
+        imagef = new UploadFragment();
         mypagef = new MypageFragment();
         naviMenu = findViewById(R.id.bottom_navigation);
         menu=naviMenu.getMenu();
